@@ -2,7 +2,7 @@
 
 ########################################################################################################################################
 ##                                                                                                                                    ##
-##  Script name: mac_performance.R                                                                                                    ##
+##  Script name: mac_performance.sh                                                                                                   ##
 ##  Purpose of script: Collect different performance-related information from Mac native utilities and save it to a log file.         ##
 ##                                                                                                                                    ##
 ##  Author: Mart Roben                                                                                                                ##
