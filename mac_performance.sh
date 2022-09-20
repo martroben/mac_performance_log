@@ -10,7 +10,7 @@
 ##  Contact: mart@altacom.eu                                                                                                          ##
 ##                                                                                                                                    ##
 ##  Copyright: MIT License                                                                                                            ##
-##  https://github.com/martroben/mac_performance_log                                                                                  ##                                                                                                       ##
+##  https://github.com/martroben/mac_performance_log                                                                                  ##
 ##                                                                                                                                    ##
 ########################################################################################################################################
 
