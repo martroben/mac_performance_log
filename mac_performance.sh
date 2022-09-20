@@ -1,13 +1,29 @@
 #!/bin/sh
 
+########################################################################################################################################
+##                                                                                                                                    ##
+##  Script name: mac_performance.R                                                                                                    ##
+##  Purpose of script: Collect different performance-related information from Mac native utilities and save it to a log file.         ##
+##                                                                                                                                    ##
+##  Author: Mart Roben                                                                                                                ##
+##  Date Created: 20. Sept 2022                                                                                                       ##
+##  Contact: mart@altacom.eu                                                                                                          ##
+##                                                                                                                                    ##
+##  Copyright: MIT License                                                                                                            ##
+##  https://github.com/martroben/mac_performance_log                                                                                  ##                                                                                                       ##
+##                                                                                                                                    ##
+########################################################################################################################################
+
 ##############
 # Parameters #
 ##############
 
 log_path='/var/log/performance.log'
+
+# Number of times to run top and the interval in between them
+# (Output from each cycle is saved)
 n_cycles=3
-interval_s=2
-now=$(date +'%Y-%m-%d_%H:%M')
+interval_s=120
 
 
 
@@ -31,16 +47,16 @@ fi
 
 
 
+###########
+# Logging #
+###########
+
+now=$(date +'%Y-%m-%d_%H:%M')
 echo =====START_SESSION_$now===== >> $log_path
 
 
-
-##########################
-# Get power/battery info #
-##########################
-
+# Get power/battery info
 echo Collecting battery info:
-
 echo -----START_BATTERY_INFO----- >> $log_path
 
 echo -----START_SYSTEMWIDE_POWER_SETTINGS----- >> $log_path
@@ -80,15 +96,10 @@ pmset -g adapter >> $log_path
 echo -----END_ADAPTER_STATUS-----\\n\\n >> $log_path
 
 echo -----END_BATTERY_INFO-----\\n\\n\\n\\n\\n >> $log_path
-
 echo Battery info saved to $log_path\\n
 
 
-
-#################
-# Get disk info #
-#################
-
+# Get disk info
 echo Collecting disk info
 
 echo -----START_DISK_INFO----- >> $log_path
@@ -98,13 +109,8 @@ echo -----END_DISK_INFO-----\\n\\n\\n\\n\\n >> $log_path
 echo Disk info saved to $log_path\\n
 
 
-
-################
-# Get top data #
-################
-
+# Get top data
 echo Collecting processes info: $n_cycles cycles with an interval of $interval_s seconds.
-
 echo -----START_TOP_INFO----- >> $log_path
 
 i=0
@@ -119,11 +125,12 @@ do
 done
 
 echo -----END_TOP_INFO-----\\n\\n\\n\\n\\n >> $log_path
-
 echo Processes info saved to $log_path\\n
 
 
-
 echo =====END_SESSION_$now===== >> $log_path
+
+
+
 echo Script finished, info saved to $log_path
 exit 0
